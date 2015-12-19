@@ -8,16 +8,18 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Jibril
+TARGET = "Jibril"
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-        Versioning.cpp
+        Versioning.cpp \
+    Animation.cpp
 
 HEADERS  += MainWindow.h \
-        Versioning.h
+        Versioning.h \
+    Animation.h
 
 win32 {
 

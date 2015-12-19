@@ -1,10 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "Versioning.h"
+
 #include <QMainWindow>
 #include <QLabel>
 #include <QTimer>
 #include <QMouseEvent>
+
+#include "Animation.h"
 
 class MainWindow : public QWidget
 {
@@ -13,6 +17,8 @@ class MainWindow : public QWidget
     public :
 
         MainWindow() ;
+
+        Versioning Actual_Version ;
 
         QLabel *Idle_1 ;
         QLabel *Idle_2 ;

@@ -1,8 +1,6 @@
 #include "MainWindow.h"
-#include "Versioning.h"
-#include <QApplication>
 
-#include <iostream>
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {
@@ -10,15 +8,9 @@ int main(int argc, char *argv[])
 
     MainWindow Test ;
 
-    Versioning Ver ;
+    app.setApplicationName(QString::fromStdString("Jibril v" + Test.Actual_Version.GetVersion()));
 
-    std::cout << Ver.GetVersion() << std::endl ;
-
-    Ver.SetVersion(1,2,3,4);
-
-    std::cout << Ver.GetVersion() << std::endl ;
-
-    Test.show();
+    Test.show() ;
 
     return app.exec();
 }

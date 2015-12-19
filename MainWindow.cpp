@@ -1,11 +1,18 @@
 #include "MainWindow.h"
+
+#include "Animation.h"
+#include "Versioning.h"
+
 #include <QApplication>
 #include <QLabel>
 #include <QMouseEvent>
 
 MainWindow::MainWindow() : QWidget()
 {
+    Actual_Version.SetVersion(0,0,0,2);
+
     setFixedSize(500, 300) ;
+    setWindowTitle(QString::fromStdString("Jibril v" + Actual_Version.GetVersion()));
 
     setStyleSheet("background:transparent;") ;
     setAttribute(Qt::WA_TranslucentBackground) ;
