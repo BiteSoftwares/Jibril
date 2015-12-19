@@ -14,19 +14,11 @@ MainWindow::MainWindow() : QWidget()
     SwitchTimer = new QTimer(this) ;
 
     Idle_1 = new QLabel(this) ;
-<<<<<<< HEAD
     Idle_1 -> setPixmap(QPixmap("../../../Data/3D/Renders/Idle_1.png")) ;
     Idle_1->setVisible(true);
 
     Idle_2 = new QLabel(this) ;
     Idle_2 -> setPixmap(QPixmap("../../../Data/3D/Renders/Idle_2.png")) ;
-=======
-    Idle_1 -> setPixmap(QPixmap("../../Data/3D/Renders/Idle_1.png")) ;
-    Idle_1->setVisible(true);
-
-    Idle_2 = new QLabel(this) ;
-    Idle_2 -> setPixmap(QPixmap("../../Data/3D/Renders/Idle_2.png")) ;
->>>>>>> 16889d6fcba4cee975624581277276a4d4434e4b
     Idle_2->setVisible(false);
 
     QObject::connect(SwitchTimer, SIGNAL(timeout()), this, SLOT(SwitchImages())) ;

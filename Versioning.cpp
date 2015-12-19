@@ -13,11 +13,7 @@ std::string IntToStr(int i) {
 }
 Versioning::Versioning()
 {
-<<<<<<< HEAD
     FilePath = "../../../Data/Version.txt" ;
-=======
-    FilePath = "/home/elpollo/Desktop/CODE/Jibril/Jibril/Data/Version.txt" ;
->>>>>>> 16889d6fcba4cee975624581277276a4d4434e4b
 }
 
 std::string Versioning::GetVersion()
