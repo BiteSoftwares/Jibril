@@ -19,6 +19,7 @@ SOURCES += main.cpp\
 HEADERS  += MainWindow.h \
         Versioning.h
 
+<<<<<<< HEAD
 win32 {
 
     CONFIG(debug, debug|release) {
@@ -74,3 +75,18 @@ unix:!macx {
 }
 
 OTHER_FILES +=
+=======
+CONFIG(debug, debug|release) {
+    DESTDIR = Bin/Debug
+    OBJECTS_DIR = Bin/Debug/.obj
+    MOC_DIR = Bin/Debug/.moc
+    RCC_DIR = Bin/Debug/.rcc
+    UI_DIR = Bin/Debug/.ui
+} else {
+    DESTDIR = Bin/Release
+    OBJECTS_DIR = Bin/Release/.obj
+    MOC_DIR = Bin/Release/.moc
+    RCC_DIR = Bin/Release/.rcc
+    UI_DIR = Bin/Release/.ui
+}
+>>>>>>> 16889d6fcba4cee975624581277276a4d4434e4b
