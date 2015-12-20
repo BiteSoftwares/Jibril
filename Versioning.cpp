@@ -4,13 +4,8 @@
 #include <string>
 #include <sstream>
 
-//#include <iostream>
+#include "IntToStr.h"
 
-std::string IntToStr(int i) {
-     std::ostringstream oss;
-     oss << i;
-     return oss.str();
-}
 Versioning::Versioning()
 {
     FilePath = "../../../Data/Version.txt" ;

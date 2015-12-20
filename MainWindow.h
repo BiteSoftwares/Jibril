@@ -8,8 +8,6 @@
 #include <QTimer>
 #include <QMouseEvent>
 
-#include "Animation.h"
-
 class MainWindow : public QWidget
 {
     Q_OBJECT
@@ -20,8 +18,7 @@ class MainWindow : public QWidget
 
         Versioning Actual_Version ;
 
-        QLabel *Idle_1 ;
-        QLabel *Idle_2 ;
+        QLabel *Jibril_Image ;
 
         QTimer *SwitchTimer ;
 
@@ -30,6 +27,10 @@ class MainWindow : public QWidget
         void SwitchImages();
 
     private:
+
+        std::string Anim_State ;
+
+        int Anim_Cursor ;
 
         void mousePressEvent(QMouseEvent *event);
         void mouseReleaseEvent(QMouseEvent *event);

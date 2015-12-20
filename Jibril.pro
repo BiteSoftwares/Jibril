@@ -15,11 +15,11 @@ TEMPLATE = app
 SOURCES += main.cpp\
         MainWindow.cpp \
         Versioning.cpp \
-    Animation.cpp
+    IntToStr.cpp
 
 HEADERS  += MainWindow.h \
         Versioning.h \
-    Animation.h
+    IntToStr.h
 
 win32 {
 
