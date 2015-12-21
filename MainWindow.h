@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "Versioning.h"
+#include "Consciousness.h"
 
 #include <QMainWindow>
 #include <QLabel>
@@ -28,7 +29,7 @@ class MainWindow : public QWidget
 
     private:
 
-        std::string Anim_State ;
+        Consciousness Mind ;
 
         int Anim_Cursor ;
 

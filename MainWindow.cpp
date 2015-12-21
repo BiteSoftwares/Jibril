@@ -1,6 +1,8 @@
 #include "MainWindow.h"
 
 #include "Versioning.h"
+#include "Consciousness.h"
+
 #include "IntToStr.h"
 
 #include <QApplication>
@@ -22,22 +24,20 @@ MainWindow::MainWindow() : QWidget()
 
     SwitchTimer = new QTimer(this) ;
 
-    Anim_State = "Starting" ;
-
     Anim_Cursor = 0 ;
 
     Jibril_Image = new QLabel(this) ;
-    Jibril_Image -> setPixmap(QPixmap("../../../Data/3D/Renders/Startup/0000.png")) ;
+    Jibril_Image -> setPixmap(QPixmap(500, 300)) ;
     Jibril_Image -> setVisible(true);
 
     QObject::connect(SwitchTimer, SIGNAL(timeout()), this, SLOT(SwitchImages())) ;
 
-    SwitchTimer -> start(20) ;
+    SwitchTimer -> start(25) ;
 }
 
 void MainWindow::SwitchImages()
 {
-    if (Anim_State == "Starting")
+    if (Mind.Get_State() == "Starting")
     {
         if (Anim_Cursor < 59)
         {
@@ -45,7 +45,7 @@ void MainWindow::SwitchImages()
         }
         else
         {
-            Anim_State = "Idle" ;
+            Mind.Change_State("Idle") ;
         }
 
         if (Anim_Cursor < 10)
@@ -59,7 +59,7 @@ void MainWindow::SwitchImages()
         }
     }
 
-    if (Anim_State == "Idle")
+    if (Mind.Get_State() == "Idle")
     {
         if (Anim_Cursor < 80)
         {
@@ -91,7 +91,9 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-    SwitchTimer -> start(20);
+    m_nMouseClick_X_Coordinate = event -> x();
+    m_nMouseClick_Y_Coordinate = event -> y();
+    SwitchTimer -> start(25);
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
