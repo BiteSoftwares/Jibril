@@ -22,10 +22,12 @@ class MainWindow : public QWidget
         QLabel *Jibril_Image ;
 
         QTimer *SwitchTimer ;
+        QTimer *Parameters_Update_Timer ;
 
     public slots :
 
-        void SwitchImages();
+        void SwitchImages() ;
+        void Display_Parameters() ;
 
     private:
 
@@ -33,11 +35,11 @@ class MainWindow : public QWidget
 
         int Anim_Cursor ;
 
-        void mousePressEvent(QMouseEvent *event);
-        void mouseReleaseEvent(QMouseEvent *event);
-        void mouseMoveEvent(QMouseEvent *event);
-        int m_nMouseClick_X_Coordinate;
-        int m_nMouseClick_Y_Coordinate;
+        void mousePressEvent(QMouseEvent *event) ;
+        void mouseReleaseEvent(QMouseEvent *event) ;
+        void mouseMoveEvent(QMouseEvent *event) ;
+        int m_nMouseClick_X_Coordinate ;
+        int m_nMouseClick_Y_Coordinate ;
 
 };
 

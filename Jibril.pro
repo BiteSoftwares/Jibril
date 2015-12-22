@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         Source/Consciousness.cpp \
         Source/IntToStr.cpp \
         Source/MainWindow.cpp \
-        Source/Versioning.cpp
+        Source/Versioning.cpp \
+        Source/Consciousness_Parameter.cpp
 
 HEADERS  += Include/Consciousness.h \
         Include/IntToStr.h \
         Include/MainWindow.h \
-        Include/Versioning.h
+        Include/Versioning.h \
+        Include/Consciousness_Parameter.h
 
 win32 {
 

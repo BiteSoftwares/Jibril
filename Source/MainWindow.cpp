@@ -11,7 +11,7 @@
 
 MainWindow::MainWindow() : QWidget()
 {
-    Actual_Version.SetVersion(0,0,0,3);
+    Actual_Version.SetVersion(0,0,0,4);
 
     setFixedSize(500, 300) ;
     setWindowTitle(QString::fromStdString("Jibril v" + Actual_Version.GetVersion()));
@@ -20,7 +20,10 @@ MainWindow::MainWindow() : QWidget()
     setAttribute(Qt::WA_TranslucentBackground) ;
     setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
 
+    Mind.Initialize_Parameters() ;
+
     SwitchTimer = new QTimer(this) ;
+    Parameters_Update_Timer = new QTimer(this) ;
 
     Anim_Cursor = 0 ;
 
@@ -29,8 +32,10 @@ MainWindow::MainWindow() : QWidget()
     Jibril_Image -> setVisible(true);
 
     QObject::connect(SwitchTimer, SIGNAL(timeout()), this, SLOT(SwitchImages())) ;
+    QObject::connect(Parameters_Update_Timer, SIGNAL(timeout()), this, SLOT(Display_Parameters())) ;
 
     SwitchTimer -> start(25) ;
+    Parameters_Update_Timer -> start(5000) ;
 }
 
 void MainWindow::SwitchImages()
@@ -78,6 +83,15 @@ void MainWindow::SwitchImages()
             Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/Idle/00" + IntToStr(Anim_Cursor) + ".png")));
         }
     }
+}
+
+void MainWindow::Display_Parameters()
+{
+    for (unsigned int i = 0 ; i < Mind.Parameter_List.size() ; i++)
+    {
+        std::cout << "Parameter : " << Mind.Parameter_Name_List[i] << " Value : " << Mind.Parameter_List[i].Get_Parameter_Value() << std::endl ;
+    }
+    std::cout << std::endl ;
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
