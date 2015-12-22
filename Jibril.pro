@@ -13,15 +13,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        MainWindow.cpp \
-        Versioning.cpp \
-    IntToStr.cpp \
-    Consciousness.cpp
+        Source/Consciousness.cpp \
+        Source/IntToStr.cpp \
+        Source/MainWindow.cpp \
+        Source/Versioning.cpp
 
-HEADERS  += MainWindow.h \
-        Versioning.h \
-    IntToStr.h \
-    Consciousness.h
+HEADERS  += Include/Consciousness.h \
+        Include/IntToStr.h \
+        Include/MainWindow.h \
+        Include/Versioning.h
 
 win32 {
 
