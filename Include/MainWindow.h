@@ -28,6 +28,7 @@ class MainWindow : public QWidget
 
         void SwitchImages() ;
         void Display_Parameters() ;
+        void Update_Parameters() ;
 
     private:
 

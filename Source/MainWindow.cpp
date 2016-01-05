@@ -11,8 +11,6 @@
 
 MainWindow::MainWindow() : QWidget()
 {
-    Actual_Version.SetVersion(0,0,0,4);
-
     setFixedSize(500, 300) ;
     setWindowTitle(QString::fromStdString("Jibril v" + Actual_Version.GetVersion()));
 
@@ -33,9 +31,10 @@ MainWindow::MainWindow() : QWidget()
 
     QObject::connect(SwitchTimer, SIGNAL(timeout()), this, SLOT(SwitchImages())) ;
     QObject::connect(Parameters_Update_Timer, SIGNAL(timeout()), this, SLOT(Display_Parameters())) ;
+    QObject::connect(Parameters_Update_Timer, SIGNAL(timeout()), this, SLOT(Update_Parameters())) ;
 
-    SwitchTimer -> start(25) ;
-    Parameters_Update_Timer -> start(5000) ;
+    SwitchTimer -> start(20) ;
+    Parameters_Update_Timer -> start(1000) ;
 }
 
 void MainWindow::SwitchImages()
@@ -53,12 +52,11 @@ void MainWindow::SwitchImages()
 
         if (Anim_Cursor < 10)
         {
-            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/Startup/000" + IntToStr(Anim_Cursor) + ".png")));
-
+            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/000" + IntToStr(Anim_Cursor) + ".png")));
         }
         else
         {
-            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/Startup/00" + IntToStr(Anim_Cursor) + ".png")));
+            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/00" + IntToStr(Anim_Cursor) + ".png")));
         }
     }
 
@@ -75,12 +73,32 @@ void MainWindow::SwitchImages()
 
         if (Anim_Cursor < 10)
         {
-            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/Idle/000" + IntToStr(Anim_Cursor) + ".png")));
-
+            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/000" + IntToStr(Anim_Cursor) + ".png")));
         }
         else
         {
-            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/Idle/00" + IntToStr(Anim_Cursor) + ".png")));
+            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/00" + IntToStr(Anim_Cursor) + ".png")));
+        }
+    }
+
+    if (Mind.Get_State() == "Bored")
+    {
+        if (Anim_Cursor < 80)
+        {
+            Anim_Cursor ++ ;
+        }
+        else
+        {
+            Anim_Cursor = 60 ;
+        }
+
+        if (Anim_Cursor < 10)
+        {
+            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/000" + IntToStr(Anim_Cursor) + ".png")));
+        }
+        else
+        {
+            Jibril_Image -> setPixmap(QPixmap(QString::fromStdString("../../../Data/3D/Renders/00" + IntToStr(Anim_Cursor) + ".png")));
         }
     }
 }
@@ -91,7 +109,15 @@ void MainWindow::Display_Parameters()
     {
         std::cout << "Parameter : " << Mind.Parameter_Name_List[i] << " Value : " << Mind.Parameter_List[i].Get_Parameter_Value() << std::endl ;
     }
-    std::cout << std::endl ;
+    std::cout << std::endl << std::endl ;
+
+    std::cout << Mind.Get_State() << std::endl ;
+}
+
+void MainWindow::Update_Parameters()
+{
+    Mind.Update_Parameters() ;
+    Mind.Update_State() ;
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

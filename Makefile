@@ -311,6 +311,7 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) Bin/Linux/Release/.moc/moc_MainWindow.cpp
 Bin/Linux/Release/.moc/moc_MainWindow.cpp: Include/Versioning.h \
 		Include/Consciousness.h \
+		Include/Consciousness_Parameter.h \
 		/usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qwidget.h \
@@ -449,6 +450,7 @@ compiler_clean: compiler_moc_header_clean
 Bin/Linux/Release/.obj/main.o: main.cpp Include/MainWindow.h \
 		Include/Versioning.h \
 		Include/Consciousness.h \
+		Include/Consciousness_Parameter.h \
 		/usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qwidget.h \
@@ -576,7 +578,8 @@ Bin/Linux/Release/.obj/main.o: main.cpp Include/MainWindow.h \
 		/usr/include/qt5/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Bin/Linux/Release/.obj/main.o main.cpp
 
-Bin/Linux/Release/.obj/Consciousness.o: Source/Consciousness.cpp Include/Consciousness.h
+Bin/Linux/Release/.obj/Consciousness.o: Source/Consciousness.cpp Include/Consciousness.h \
+		Include/Consciousness_Parameter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Bin/Linux/Release/.obj/Consciousness.o Source/Consciousness.cpp
 
 Bin/Linux/Release/.obj/IntToStr.o: Source/IntToStr.cpp Include/IntToStr.h
@@ -585,6 +588,7 @@ Bin/Linux/Release/.obj/IntToStr.o: Source/IntToStr.cpp Include/IntToStr.h
 Bin/Linux/Release/.obj/MainWindow.o: Source/MainWindow.cpp Include/MainWindow.h \
 		Include/Versioning.h \
 		Include/Consciousness.h \
+		Include/Consciousness_Parameter.h \
 		/usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qwidget.h \
